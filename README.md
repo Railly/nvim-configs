@@ -1,2 +1,5 @@
 # Neovim Configuration - Windows
-My custom Neovim's configuration
+This is my custom Neovim's configuration.
+Because I am using Plug as my plugin manager, just run: 
+`Plug-Install`
+Now start using it :)
