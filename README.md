@@ -1,2 +1,2 @@
-# nvim-configs
-nvim-configs
+# Neovim Configuration - Windows
+My custom Neovim's configuration
