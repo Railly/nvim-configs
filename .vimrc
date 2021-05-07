@@ -1,4 +1,4 @@
-" This script contains plugin specific settings
+"This script contains plugin specific settings
 source ~/configs/.vim/plugins.vim
 " This script contains the plugins' configuration:
 source ~/configs/.vim/plugins-config.vim

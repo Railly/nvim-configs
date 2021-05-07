@@ -1,0 +1,348 @@
+import React from 'react'
+import styled from 'styled-components'
+import data from '../data.json'
+import GridRow from '../components/gridRow'
+import GridHeader from '../components/gridHeader'
+
+const GridContainer = styled.div`
+  background: #eee;
+  display: grid;
+  margin: 10px;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(14, 1fr);
+  height: 100vh;
+  gap: 3px;
+
+  p {
+    padding-top: 0.625em;
+    height: 100%;
+    text-align: center;
+  }
+
+  .time:nth-child(8n + 1) {
+    font-weight: bold;
+    background-color: #78d687;
+    color: #eee;
+  }
+  .day {
+    background-color: #2f2f2f;
+    color: #fff;
+  }
+`
+
+const GridItem = styled.div`
+  background-color: #e5e5e5;
+`
+
+const Solution = ({ history }) => {
+  //{history.location.state.allForms.slice(1).map(x => JSON.stringify(x))}
+  //return <>{data.map(x => JSON.stringify(x))}</>
+  return (
+    <GridContainer>
+      <GridHeader />
+      <GridRow startTime="8" endTime="9" data={data} />
+
+      <GridItem>
+        <p className="time">9:00 - 10:00</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+
+      <GridItem>
+        <p className="time">10:00 - 11:00</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+
+      <GridItem>
+        <p className="time">11:00 - 12:00</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+
+      <GridItem>
+        <p className="time">12:00 - 13:00</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+
+      <GridItem>
+        <p className="time">13:00 - 14:00</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+
+      <GridItem>
+        <p className="time">14:00 - 15:00</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+
+      <GridItem>
+        <p className="time">15:00 - 16:00</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+
+      <GridItem>
+        <p className="time">17:00 - 18:00</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+
+      <GridItem>
+        <p className="time">19:00 - 20:00</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+
+      <GridItem>
+        <p className="time">20:00 - 21:00</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+
+      <GridItem>
+        <p className="time">21:00 - 22:00</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+
+      <GridItem>
+        <p className="time">22:00 - 23:00</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+      <GridItem>
+        <p>Curso</p>
+      </GridItem>
+    </GridContainer>
+  )
+}
+
+export default Solution

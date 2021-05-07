@@ -17,7 +17,7 @@ map  N <Plug>(easymotion-prev)
 
 "NERDTreeToggle
 nmap <silent><C-b> :NERDTreeToggle<CR>
-nmap <Leader>r :NERDTreeRefreshRoot<CR>
+nmap <Leader>r :NERDTreeRefreshRoot
 
 "Save & Quit fast
 nmap <Leader>w :w <CR>

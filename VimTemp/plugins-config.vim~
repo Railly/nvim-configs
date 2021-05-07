@@ -13,12 +13,10 @@ let g:closetag_filenames = '*.html,*.js,*.jsx,*.ts,*.tsx'
 "NERDTree
 let NERDTreeQuitOnOpen = 1
 let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
+let NERDTreeDirArrows = 0
 let NERDTreeShowLineNumbers = 1
 let NERDTreeShowHidden = 1
 let NERDTreeAutoDeleteBuffer = 1
-let g:NERDTreeDirArrowExpandable = '▸'
-let g:NERDTreeDirArrowCollapsible = '▾'
 
 "gruvbox
  if has('termguicolors')

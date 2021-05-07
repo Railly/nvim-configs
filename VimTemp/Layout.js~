@@ -1,0 +1,26 @@
+import React from 'react'
+import Header from './header'
+import Toggle from './Toggler'
+import { ThemeProvider } from 'styled-components'
+import { useDarkMode } from '../hooks/useDarkMode'
+import { GlobalStyles } from './globalStyles'
+import { lightTheme, darkTheme } from './Themes'
+
+const Layout = ({ children }) => {
+  const [theme, themeToggler] = useDarkMode()
+  const themeMode = theme === 'light' ? lightTheme : darkTheme
+
+  return (
+    <ThemeProvider theme={themeMode}>
+      <>
+        <GlobalStyles />
+        <Header theme={themeMode} />
+        <Toggle theme={theme} toggleTheme={themeToggler} />
+        {children}
+      </>
+      <Footer content="Made by @RaillyHugo" />
+    </ThemeProvider>
+  )
+}
+
+export default Layout

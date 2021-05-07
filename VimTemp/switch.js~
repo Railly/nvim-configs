@@ -1,0 +1,21 @@
+import styled from 'styled-components'
+
+export const ToggleComponent = styled.button`
+  width: 6em;
+  cursor: pointer;
+  background: ${({ theme }) => theme.switchBackground};
+  border: 2px solid ${({ theme }) => theme.switchBackground};
+  border-radius: 30px;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+`
+export const SpaceAroundContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+`
+
+export const ToggleWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 1.5em;
+`
