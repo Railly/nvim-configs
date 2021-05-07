@@ -2,9 +2,9 @@
 "MapLeader = SpaceBar
 let mapleader = " "
 tnoremap <Esc> <C-\><C-n>
-"au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 function! OpenTerminal()
-  split term://cmd
+  split term://powershell
   resize 10
 endfunction
 nnoremap <c-n> :call OpenTerminal()<CR>
@@ -17,6 +17,7 @@ map  N <Plug>(easymotion-prev)
 
 "NERDTreeToggle
 nmap <silent><C-b> :NERDTreeToggle<CR>
+nmap <Leader>r :NERDTreeRefreshRoot<CR>
 
 "Save & Quit fast
 nmap <Leader>w :w <CR>
@@ -49,10 +50,10 @@ else
 endif
 
 "coc
-nmap <silent> gd <Plug> (coc-definition)
-nmap <silent> gy <Plug> (coc-type-definition)
-nmap <silent> gi <Plug> (coc-implementation)
-nmap <silent> gr <Plug> (coc-references)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 "Tabs
 noremap <leader>1 1gt
