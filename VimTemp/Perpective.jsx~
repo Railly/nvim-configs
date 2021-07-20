@@ -1,0 +1,10 @@
+import React from 'react'
+import './Perspective.css'
+
+export default function Perspective () {
+  return (
+    <div className="container">
+      <div className="item"></div>
+    </div>
+  )
+}

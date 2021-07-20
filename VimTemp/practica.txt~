@@ -1,0 +1,45 @@
+Defina que es un proceso y cuales son sus caracteristicas
+Un proceso es un programa en ejecucion.
+Se caracteriza por ser:
+	Una entidad dinamica
+	Puede crear otros procesos
+	Tiene un final
+	Usa recursos
+	Tiene un espacio de direcciones
+
+En que consiste el cambio de contexto durante un ${props => props}
+El cambio de contexto se da cuando el sistema operativo cambia de un proceso a otro.
+En ese cambio de contexto, se guarda el estado del proceso anterior y luego carga el estado del proceso siguiente.
+Esto permite alterna procesos de manera segura y mantener el estado del proceso ejecutado previamente.
+
+Defina que es un recurso y cuales serian sus categorias\
+Un recurso es todo aquello que necesita un proceso para llevar a cabo su ejecucion.
+En caso de no estar disponible, el proceso se bloquea.
+Categorias:
+	-Compartibles: Simultaneo o Alternado
+	-No Compartibles.
+
+Cuales son los objetivos y funcionalidades de un sistema operativo
+El Sistema Operativo gestiona procesos y recursos.
+Es el software principal de las computadoras.
+Entre sus funcionalidades principales:
+	-Orquestar el ritmo de ejecucion de procesos.
+	-Se encarga de llevar a cabo la planificacion de procesos
+	-Se encarga de distribuir la CPU equitativamente.
+	-Despacha recursos a los procesos y gestiona el cambio de contexto.
+
+Defina los estados de ejecucion listo / bloqueado
+
+Estado Listo: El proceso esta a la espera de CPU (No tiene CPU). Cuenta con todos los recursos (Solo le falta CPU)
+Estado bloqueado: El procesa no cuenta con uno o mas recursos. Por lo tanto no le pueden asignar CPU (Se le quita CPU)
+Estado de ejecucion: Tiene asignada CPU
+
+Suspendido bloqueado suspendido listo suspendido
+
+Suspendido tiene la connotacion de estar a la espera de que suceda algo, o que por razones ajenas al proceso,
+no pueda estar en un estado de listo o bloqueado de manera normal.
+Listo suspendido: Esta listo pero se lleva al disco duro por falta de memoria.
+Bloqueado suspendido: El proceso se encuentra en la memoria secundaria a la espera de un evento.
+
+Dado un valor en el registro DL, si es par, almacenar 0 en el registro AL o 1 en caso contrario
+

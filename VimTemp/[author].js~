@@ -1,0 +1,132 @@
+import Cached from '../../component/Cached'
+import QuoteText from '../../component/QuoteText'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+
+export default function Quote ({ data }) {
+  const router = useRouter()
+  const [loading, setLoading] = useState(false)
+
+  const fetchRandomAuthor = () => {
+    setLoading(true)
+    fetch('https://quote-garden.herokuapp.com/api/v3/quotes/random')
+      .then((res) => res.json())
+      .then((obj) => {
+        router.replace(`/quotes/${obj.data[0].quoteAuthor}`)
+      })
+      .catch((err) => {
+        setLoading(false)
+        console.error(err)
+      })
+  }
+
+  useEffect(() => {
+    router.events.on('routeChangeComplete', () => {
+      setLoading(false)
+    })
+  }, [router.asPath])
+
+  return (
+    <>
+      <div className="quote">
+        <div className="button-container">
+          <button onClick={fetchRandomAuthor}>
+            <span>
+              random
+              <Cached fill="#4F4F4F" width={16} height={22} />
+            </span>
+          </button>
+        </div>
+
+        {loading
+          ? (
+          <div className="loading">
+            <h1>Cargando...</h1>
+          </div>
+            )
+          : (
+          <>
+            <div className="author">
+              <h1>{data[0].quoteAuthor}</h1>
+            </div>
+            <div>
+              {data.map((quote) => (
+                <QuoteText key={quote._id}>{quote.quoteText}</QuoteText>
+              ))}
+            </div>
+          </>
+            )}
+      </div>
+      <style jsx>{`
+        .quote {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          margin: 0 2em;
+        }
+
+        .loading {
+          height: 95vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .author {
+          margin: 4em 0;
+          height: auto;
+          width: 51em;
+          padding-left: 2em;
+          font-family: 'Raleway', sans-serif;
+          font-weight: 500;
+        }
+
+        button {
+          border: 0;
+          background-color: transparent;
+          cursor: pointer;
+          position: fixed;
+          font-size: 1.3em;
+          top: 2em;
+        }
+
+        span {
+          display: flex;
+          justify-content: flex-end;
+          padding-right: 2em;
+          margin: 0;
+          align-items: center;
+          font-family: 'Raleway', sans-serif;
+          font-weight: 500;
+          color: #4f4f4f;
+        }
+
+        .button-container {
+          width: 100vw;
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+        }
+      `}</style>
+    </>
+  )
+}
+
+export async function getServerSideProps (context) {
+  const { params, res } = context
+  const { author } = params
+
+  const apiReponse = await fetch(
+    `https://quote-garden.herokuapp.com/api/v3/quotes?author=${author}`
+  )
+
+  if (apiReponse.ok) {
+    const props = await apiReponse.json()
+    return { props }
+  }
+
+  if (res) {
+    res.writeHead(400).end()
+  }
+}

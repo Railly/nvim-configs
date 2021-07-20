@@ -1,0 +1,10 @@
+import React from 'react'
+import './Pseudoelements.css'
+
+export default function App () {
+  return (
+    <>
+      <div>Railly</div>
+    </>
+  )
+}

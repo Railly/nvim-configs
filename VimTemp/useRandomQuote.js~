@@ -1,0 +1,18 @@
+import { useState } from 'react'
+
+export default function useRandomQuote () {
+  const [randomQuote, setRandomQuote] = useState(null)
+  const [loading, setLoading] = useState(true)
+
+  fetch('https://quote-garden.herokuapp.com/api/v3/quotes/random')
+    .then((res) => res.json())
+    .then((obj) => {
+      setRandomQuote(obj.data[0])
+      setLoading(false)
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+
+  return [randomQuote]
+}

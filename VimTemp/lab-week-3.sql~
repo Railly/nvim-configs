@@ -1,0 +1,169 @@
+-- PROBLEMA 1  Los 5 paises donde tienen la mayor cantidad de idiomas
+SELECT 
+	c.name, count(*) as cantidad_idiomas
+FROM
+	country c, countrylanguage cl
+WHERE
+	c.Code = cl.CountryCode
+GROUP BY
+	c.Name
+ORDER BY 
+	2 DESC
+LIMIT 5
+
+-- PROBLEMA 2 Los 10 paises donde tienen la mayor cantidad de poblacion
+SELECT 
+	c.name AS Nombre,
+	c.Population AS cant_habitantes
+FROM
+	country c
+ORDER BY 
+	cant_habitantes 
+DESC LIMIT 10;
+
+
+
+--  PROBLEMA 3 Los paises que tengan mas de un idioma oficial
+SELECT
+	c.name, count(*) as idiomas_oficiales
+FROM
+	country c, countrylanguage cl
+WHERE
+	c.Code = cl.CountryCode AND
+	cl.IsOfficial = 'T'
+GROUP BY
+	c.name
+
+--  PROBLEMA 4 La cantidad de paises por continente
+
+SELECT
+	c.Continent as continente, count(*) as cantidad_paises
+FROM
+	country c
+GROUP BY
+	continente
+
+--  PROBLEMA 5 Cual es el idioma que se habla en la mayoria de paises
+SELECT 
+	cl.language, count(*) as cantidad_de_paises
+FROM
+	countrylanguage cl
+GROUP BY
+	cl.Language
+ORDER BY
+	2 DESC
+LIMIT 1
+
+--  PROBLEMA 6 Cual es el idioma mas hablado por la mayoria de cantidad de personas
+
+-- MALLLL
+SELECT 
+	cl.Language, 
+  SUM(c.Population) as total_poblacion 
+FROM 
+	country co,
+  countrylanguage cl
+WHERE
+	co.Code = cl.CountryCode
+GROUP BY
+	cl.Language
+
+-- BIEEEEEN
+SELECT 
+	cl.Language, 
+    SUM(co.Population * cl.Percentage / 100) AS total_poblacion
+FROM 
+	country co
+INNER JOIN 
+	countrylanguage AS cl
+  ON cl.countryCode = co.Code
+GROUP BY
+	cl.Language
+ORDER BY
+	2 DESC
+
+
+--  PROBLEMA 7 Que ciudades tienen la mayor cantidad de poblacion (pais, ciudad, total)
+SELECT co.name, ci.name , ci.Population
+FROM city ci, country co
+WHERE
+	ci.CountryCode = co.Code
+ORDER BY
+	3 DESC
+LIMIT 10
+
+--  PROBLEMA 8 La cantidad de paises por tipo de gobierno donde se habla español
+SELECT co.GovernmentForm, count(*) as total_español
+FROM country co, countrylanguage cl
+WHERE
+	cl.CountryCode = co.Code AND
+    cl.Language = 'Spanish'
+GROUP BY
+	co.GovernmentForm
+ORDER BY
+	2 DESC
+
+--  PROBLEMA 9 Cuantos paises por continente hablan español o ingles
+SELECT
+	country.continent, count(*) as 'Paises que hablan ingles o español'
+FROM 
+	country, countrylanguage
+WHERE
+	country.code = countrylanguage.CountryCode 
+    AND(
+    countrylanguage.Language = 'English' 
+    OR
+    countrylanguage.Language = 'Spanish'
+    ) 
+GROUP BY 
+	country.Continent
+ORDER BY 2 desc
+
+
+--  PROBLEMA 10 Cual es la ciudad con mayor poblacion de cada continente
+SELECT
+	c.Continent as Continente,
+    ( 
+    	SELECT
+				ci.Name
+			FROM
+				country co, city ci
+			WHERE
+				co.Code = ci.CountryCode AND
+  			co.Continent = c.Continent
+			ORDER BY
+				ci.Population DESC
+			LIMIT 1
+    ) as CiudadConMayorPoblacion
+FROM
+	country c
+GROUP BY
+	c.Continent
+
+
+--  PROBLEMA 11 Cual es la capital con mayor poblacion de cada continente
+SELECT
+	c.Continent as Continente,
+    ( 
+    SELECT
+		co.Capital
+	FROM
+		country co, city ci
+	WHERE
+		co.Code = ci.CountryCode AND
+        co.Continent = c.Continent
+	ORDER BY
+		ci.Population DESC
+	LIMIT 1
+    ) as CiudadConMayorPoblacion
+FROM
+	country c
+GROUP BY
+	c.Continent
+
+--  PROBLEMA 12 Cuantos paises se independizaron entre 1800 y 1900
+SELECT count(*) as paises_independizados_1800_1900
+FROM
+	country co
+WHERE
+	co.IndepYear BETWEEN 1800  AND 1900

@@ -1,0 +1,193 @@
+-- Exercices Level 1
+
+-- 1)
+-- Actors thet contains an 'X' in the name or lastname
+SELECT concat(first_name, ' ', last_name) as Complete_Name FROM actor
+WHERE
+	first_name like '%x%' or
+  last_name like '%x%'
+
+-- 2)
+-- Address of California that contains '274' in the phone number
+SELECT address, phone FROM address
+WHERE
+	phone like '%274%'
+
+-- 3)
+-- 'Epic' or 'Brilliant' movies that last more than 180 minutes
+SELECT title, description
+FROM film
+WHERE
+	description LIKE '%Epic%' or
+    description LIKE '%Brilliant%'
+	
+-- 4)
+-- 'Movies that last between 100 and 120 minutes or between 50 and 70 minutes'
+SELECT title, length
+FROM film
+WHERE
+	length BETWEEN 100 AND 120 OR
+  length BETWEEN 50 AND 70
+
+-- 5)
+-- Movies that cost 0.99, 2.99 andhave a rating 'g' or 'r' and that talk about crocodiles
+SELECT title, description, rental_rate, rating
+FROM film
+WHERE
+	(rental_rate BETWEEN 0.99 AND 2.99) AND
+    (rating = 'g' OR
+    rating = 'r') AND
+    description like "%Crocodile%"
+
+-- 6)
+SELECT district, postal_code, phone
+FROM address
+WHERE
+	district = 'Punjab' OR
+    district = 'Ontario' OR
+    postal_code LIKE '%5' OR
+    phone LIKE '%5'
+
+-- 7)
+SELECT first_name, last_name
+FROM actor
+WHERE
+	first_name LIKE '%o%' AND
+    last_name LIKE '%a%'
+
+-- 8)
+SELECT first_name, last_name
+FROM actor
+WHERE
+	SUBSTRING(first_name, 3, 1) = 'b' OR
+    SUBSTRING(last_name, 3, 1) = 'b'
+
+-- 9)
+SELECT title, rental_rate
+FROM film
+WHERE
+	rental_rate BETWEEN 1 AND 3
+
+-- 10)
+SELECT title, rating
+FROM film
+WHERE
+	rating != 'NC-17'
+
+--11)
+SELECT rating, AVG(length)
+FROM film
+WHERE rating = 'PG'
+
+-- 12
+SELECT title, MAX(length)
+FROM film;
+
+-- Exercices Level 2
+
+-- 1)
+SELECT rating, count(*) as cantidad_peliculas FROM film
+GROUP BY rating
+ORDER BY cantidad_peliculas desc;
+
+-- 2)
+SELECT city
+FROM city
+WHERE
+ length(city) != length(replace(city, ' ', ''))
+
+-- 3)
+SELECT co.country, ci.city
+FROM country co
+	JOIN city ci on co.country_id = ci.country_id
+WHERE
+	co.country = 'Spain'
+
+-- 4)
+SELECT f.title, group_concat(a.last_name, ' ', a.first_name order by 1 asc separator ' | ') as Actores
+FROM film f
+	JOIN film_actor fa on f.film_id = fa.film_id
+  JOIN actor a on a.actor_id = fa.actor_id
+GROUP BY f.title
+
+-- 5)
+SELECT f.title, c.name as category
+FROM film f
+	JOIN film_category fc on f.film_id = fc.film_id
+  JOIN category c on c.category_id = fc.category_id
+GROUP BY f.title
+
+-- 6)
+SELECT concat(s.first_name, ' ', s.last_name) as staff, a.address ,ci.city, co.country
+FROM staff s
+	JOIN address a on a.address_id = s.address_id
+  JOIN city ci on a.city_id = ci.city_id
+  JOIN country co on ci.country_id = co.country_id
+
+--7)
+SELECT concat(cu.first_name, ' ', cu.last_name) as customer, a.address ,ci.city, co.country
+FROM customer cu
+	JOIN address a on a.address_id = cu.address_id
+  JOIN city ci on a.city_id = ci.city_id
+  JOIN country co on ci.country_id = co.country_id
+
+-- 8)
+SELECT concat(a.first_name, ' ', a.last_name) as actor_name, count(f.title) as number_of_movies
+FROM actor a
+	JOIN film_actor fa on a.actor_id = fa.actor_id
+  JOIN film f on f.film_id = fa.film_id
+WHERE
+	a.first_name = 'ED' AND
+  a.last_name = 'MANSFIELD'
+GROUP BY actor_name
+
+-- 9)
+SELECT c.name, AVG(f.length) as promedio_duracion
+FROM category c 
+	JOIN film_category fc on c.category_id = fc.category_id
+    JOIN film f on f.film_id = fc.film_id
+GROUP BY c.name
+
+-- Parcial
+SELECT 
+	p.productName,
+	od.quantityOrdered,
+	o.orderDate,
+FROM
+  products p
+  JOIN orderdetails od on p.productCode = od.productCode AND
+  JOIN orders o on o.orderNumber = od.orderNumber
+WHERE
+  month(o.orderDate) = '01' OR
+  month(o.orderDate) = '02'
+DESC LIMIT 10,
+
+SELECT 
+  concat(e.first_name, ' ', e.last_name)
+	p.paymentDate,
+  count(p.amount) as "productividad" 
+FROM
+  employees e
+  JOIN payments p on c.customerNumber = p.customerNumber AND
+  JOIN customers c on c.salesRepEmployeeNumber = e.employeeNumber
+WHERE
+  e.jobTitle != "supervisor"
+  year(p.paymentDate) != '2020' OR
+  year(p.paymentDate) != '2019' 
+GROUP BY p.amount
+DESC LIMIT 5
+
+SELECT
+  pl.textDescription,
+  o.orderDate,
+  count(p.quantityInStock) as "stock"
+  count(od.quantityOrdered) as "# de productos vendidos"
+FROM
+  JOIN orderdetails od on od.productCode = od.productCode AND
+  JOIN productlines pl on pl.productLine = p.productLine
+  JOIN orders o on o.orderNumber = od.orderNumber
+WHERE
+  year(o.orderDate) = '2020'
+GROUP BY
+  
+

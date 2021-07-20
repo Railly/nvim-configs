@@ -1,0 +1,20 @@
+a:link {
+  color: crimson;
+}
+
+a:visited {
+  color: tomato;
+}
+
+a:hover {
+  color: PaleGoldenrod;
+}
+
+p:not(.greed) {
+  color: lightsalmon;
+}
+
+.container div:nth-child(1) {
+  color: lightseagreen;
+}
+
