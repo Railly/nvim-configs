@@ -1,0 +1,17 @@
+import React from 'react'
+import './App.css'
+
+export default function App () {
+  return (
+    <>
+      <a href="/">Railly</a>
+      <p>en la</p>
+      <p className="greed">Isla</p>
+      <div className="container">
+        <div>de</div>
+        <div>la</div>
+        <div>Ambicion</div>
+      </div>
+    </>
+  )
+}

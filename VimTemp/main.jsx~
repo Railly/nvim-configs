@@ -1,0 +1,15 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import Perspective from './Perpective'
+// import Pseudoclasses from './Pseudoclasses'
+// import Pseudoelements from './Pseudoelements'
+
+ReactDOM.render(
+  <React.StrictMode>
+    {/* <Pseudoclasses/> */}
+    {/* <Pseudoelements/> */}
+    <Perspective />
+  </React.StrictMode>,
+  document.getElementById('root')
+)

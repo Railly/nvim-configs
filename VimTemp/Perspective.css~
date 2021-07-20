@@ -1,0 +1,18 @@
+.container {
+  position: relative;
+  height: 100px;
+  width: 100px;
+  background-color: coral;
+  margin-left: 3em;
+}
+
+.item {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  background-color: plum;
+  transform-style: preserve-3d;
+  border: 1px solid;
+  opacity: 0.5;
+  transform: rotateX(45deg);
+}

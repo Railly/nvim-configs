@@ -18,6 +18,7 @@ set shellcmdflag=\ -c
 set shellxquote=
 "set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-15.(%l,%c%V%)\ %P
 set nocompatible
+let g:polyglot_disabled = ['markdown']
 
 call plug#begin('~/configs/.vim/plugged')
 

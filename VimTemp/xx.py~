@@ -1,0 +1,44 @@
+from threading import Thread
+from time import time, sleep
+
+inicio1 = time()
+
+def proceso(lapso):
+    sleep(lapso)
+    print("proceso 1")
+def proceso2(lapso):
+    sleep(lapso)
+    print("proceso 2")
+def proceso3(lapso):
+    sleep(lapso)
+    print("proceso 3")
+def proceso4(lapso):
+    sleep(lapso)
+    print("proceso 4")
+
+
+# proceso()
+# proceso()
+# duracion1 = time() - inicio1
+# print("Duracion sin hilos : %d"%duracion1)
+
+inicio2 = time()
+
+t1 = Thread(target=proceso, args=(1,))
+t2 = Thread(target=proceso2, args=(3,))
+# t3 = Thread(target=proceso3, args=(1,))
+# t4 = Thread(target=proceso4, args=(3,))
+
+t1.start()
+t1.join()
+t2.start()
+# t3.start()
+# t4.start()
+# t3.join()
+# t4.join()
+
+duracion2 = time() - inicio2
+
+
+print("Duracion con hilos : %d"%duracion2)
+

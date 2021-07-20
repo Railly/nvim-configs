@@ -1,0 +1,26 @@
+const COLOR_TYPE = {
+  default: {
+    color: disabled ? '#9E9E9E' : VARIANTS_STYLES.default.color,
+    backgroundColor: disabled
+      ? '#E0E0E0'
+      : VARIANTS_STYLES.default.backgroundColor,
+    backgroundColorHover: disabled
+      ? '#AEAEAE'
+      : VARIANTS_STYLES.default.backgroundColorHover
+  },
+  primary: {
+    color: '#FFF',
+    backgroundColor: disabled ? '#E0E0E0' : '#2962FF',
+    backgroundColorHover: '##0039CB'
+  },
+  secondary: {
+    color: '#FFF',
+    backgroundColor: disabled ? '#E0E0E0' : '#455A64',
+    backgroundColorHover: '#1C313A'
+  },
+  danger: {
+    color: '#FFF',
+    backgroundColor: disabled ? '#E0E0E0' : '#D32F2F',
+    backgroundColorHover: '#9A0007'
+  }
+}
